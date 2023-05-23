@@ -1,0 +1,24 @@
+pipeline{
+    agent{label'webserver'}
+    stages{
+        stage('clone'){
+            steps{
+                git url: 'https://github.com/rahulgowdayp/my-sample-website.git'
+            }
+        }
+        stage(build){
+            steps{
+                sh 'pwd'
+                sh 'ls'
+                sh 'cd webapp ; mvn clean install'
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh 'pwd'
+                sh 'cd /home/ec2-user ; ls'
+                sh 'cp webapp/target/webapp.war /home/ec2-user/apache-tomcat-8.0.15/webapps'
+            }
+        }
+    }
+}
