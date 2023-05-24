@@ -1,5 +1,5 @@
 pipeline{
-    agent{label'webserver'}
+    agent{label'Built-In Node'}
     stages{
         stage('clone'){
             steps{
