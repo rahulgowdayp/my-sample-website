@@ -10,7 +10,7 @@ pipeline{
             steps{
                 sh 'pwd'
                 sh 'ls'
-                sh 'cd webapp ; mvn clean install'
+                sh 'mvn clean install'
             }
         }
         stage('deploy'){
